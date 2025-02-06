@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='register.css')}}">
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Create an account</h1>
+        
+        <form method="post">
+            <div class="form-group">
+                <label for="username">User name</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <p class="password-requirements">Use 8 or more characters with a mix of letters, numbers & symbols</p>
+            </div>
+
+            <p class="terms">
+                By creating an account, you agree to our
+                <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a>
+            </p>
+
+            <button type="submit" class="button">Create an account</button>
+        </form>
+
+        <p class="login-text" style="margin-top: 1.5rem;">
+            Already have an account? <a href="{{url_for('login')}}">Log in</a>
+        </p>
+    </div>
+</body>
+</html>

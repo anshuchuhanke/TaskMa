@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static',filename='signup.css')}}">
+</head>
+<body>
+    <div class="modal">
+
+        
+        <div class="tabs">
+            <div class="tab" data-tab="signup">Sign up</div>
+            <div class="tab" data-tab="login">Log in</div>
+        </div>
+
+        <!-- Sign up form -->
+        <div id="signup-form" class="form-container">
+            <h2>Sign up</h2>
+            
+            <button class="social-button">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjMTg3N0YyIj48cGF0aCBkPSJNMjQgMTJjMC02LjYyNy01LjM3My0xMi0xMi0xMlMwIDUuMzczIDAgMTJjMCA1Ljk5IDQuMzg4IDEwLjk1NCAxMC4xMjUgMTEuODU0VjE1LjQ3SDcuMDc4VjEyaDMuMDQ3VjkuMzU2YzAtMy4wMDcgMS43OTItNC42NjggNC41MTgtNC42NjhjMS4zMSAwIDIuNjguMjM0IDIuNjguMjM0djIuOTUzSDE1LjgzYy0xLjQ5IDAtMS45NTUuOTI1LTEuOTU1IDEuODc0VjEyaDMuMzI4bC0uNTMyIDMuNDdoLTIuNzk2djguMzg0QzE5LjYxMiAyMi45NTQgMjQgMTcuOTkgMjQgMTJ6Ii8+PC9zdmc+" alt="Facebook">
+                Sign up with Facebook
+            </button>
+            
+            <button class="social-button">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIuMjQgMTAuMjg1VjE0LjRoNi44MDZjLS4yNzUgMS43NjUtMS45NjcgNS4xNzQtNi44MDYgNS4xNzQtNC4xIDAtNy40NC0zLjM5My03LjQ0LTcuNTc0czMuMzQtNy41NzQgNy40NC03LjU3NGMyLjMyOCAwIDMuODkuOTg5IDQuNzggMS44NzlMMTkuMjUgNC4xM2MtMi4yNDgtMi4xMDMtNS4xNC0zLjM3My04LjgyLTMuMzczQzQuNzEuNzU3IDAgNS41MTcgMCAxMS40NzNzNC43MSAxMC43MTYgMTAuNDMgMTAuNzE2YzYuMDE4IDAgMTAtMy42NjYgMTAtOS4wNzQgMC0uNjA4LS4wNjYtMS4wNy0uMTQ2LTEuNTNoLTkuODV6IiBmaWxsPSIjNDI4NUY0Ii8+PC9zdmc+" alt="Google">
+                Sign up with Google
+            </button>
+
+            <div class="divider">OR</div>
+
+            <form id="signup-form-elements" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First name</label>
+                        <input type="text" name="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input type="text" name="lastname" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <button type="submit" class="submit-button">Sign up</button>
+            </form>
+        </div>
+
+        <!-- Login form -->
+        <div id="login-form" class="form-container">
+            <h2>Log in</h2>
+            
+            <button class="social-button">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjMTg3N0YyIj48cGF0aCBkPSJNMjQgMTJjMC02LjYyNy01LjM3My0xMi0xMi0xMlMwIDUuMzczIDAgMTJjMCA1Ljk5IDQuMzg4IDEwLjk1NCAxMC4xMjUgMTEuODU0VjE1LjQ3SDcuMDc4VjEyaDMuMDQ3VjkuMzU2YzAtMy4wMDcgMS43OTItNC42NjggNC41MTgtNC42NjhjMS4zMSAwIDIuNjguMjM0IDIuNjguMjM0djIuOTUzSDE1LjgzYy0xLjQ5IDAtMS45NTUuOTI1LTEuOTU1IDEuODc0VjEyaDMuMzI4bC0uNTMyIDMuNDdoLTIuNzk2djguMzg0QzE5LjYxMiAyMi45NTQgMjQgMTcuOTkgMjQgMTJ6Ii8+PC9zdmc+" alt="Facebook">
+                Log in with Facebook
+            </button>
+            
+            <button class="social-button">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIuMjQgMTAuMjg1VjE0LjRoNi44MDZjLS4yNzUgMS43NjUtMS45NjcgNS4xNzQtNi44MDYgNS4xNzQtNC4xIDAtNy40NC0zLjM5My03LjQ0LTcuNTc0czMuMzQtNy41NzQgNy40NC03LjU3NGMyLjMyOCAwIDMuODkuOTg5IDQuNzggMS44NzlMMTkuMjUgNC4xM2MtMi4yNDgtMi4xMDMtNS4xNC0zLjM3My04LjgyLTMuMzczQzQuNzEuNzU3IDAgNS41MTcgMCAxMS40NzNzNC43MSAxMC43MTYgMTAuNDMgMTAuNzE2YzYuMDE4IDAgMTAtMy42NjYgMTAtOS4wNzQgMC0uNjA4LS4wNjYtMS4wNy0uMTQ2LTEuNTNoLTkuODV6IiBmaWxsPSIjNDI4NUY0Ii8+PC9zdmc+" alt="Google">
+                Log in with Google
+            </button>
+
+            <div class="divider">OR</div>
+
+            <form id="login-form-elements">
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+
+                <button type="submit" class="submit-button">Log in</button>
+                
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all necessary elements
+        const tabs = document.querySelectorAll('.tab');
+        const signupForm = document.getElementById('signup-form');
+        const loginForm = document.getElementById('login-form');
+        const closeButton = document.querySelector('.close-button');
+        const forms = document.querySelectorAll('form');
+        const modal = document.querySelector('.modal');
+    
+        // Initialize the default view (signup)
+        signupForm.classList.add('active');
+        tabs[0].classList.add('active');
+        tabs[1].classList.add('inactive');
+    
+        // Handle tab switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove all active/inactive classes
+                tabs.forEach(t => {
+                    t.classList.remove('active', 'inactive');
+                });
+    
+                // Add appropriate classes to tabs
+                tabs.forEach(t => {
+                    if (t === this) {
+                        t.classList.add('active');
+                    } else {
+                        t.classList.add('inactive');
+                    }
+                });
+    
+                // Show appropriate form
+                if (this.getAttribute('data-tab') === 'signup') {
+                    signupForm.classList.add('active');
+                    loginForm.classList.remove('active');
+                } else {
+                    loginForm.classList.add('active');
+                    signupForm.classList.remove('active');
+                }
+            });
+        });
+    
+        // Handle close button
+        closeButton.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+    
+        // Handle form submissions
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
+                console.log('Form submitted:', formObject);
+                // Here you would typically make an API call to handle the form submission
+                alert('Form submitted successfully!');
+            });
+        });
+    
+        // Handle social button clicks
+        const socialButtons = document.querySelectorAll('.social-button');
+        socialButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const provider = this.textContent.includes('Facebook') ? 'Facebook' : 'Google';
+                console.log(`${provider} authentication requested`);
+                // Here you would typically implement the social authentication
+                alert(`${provider} authentication requested`);
+            });
+        });
+    
+        // Add input validation
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                validateInput(this);
+            });
+        });
+    
+        function validateInput(input) {
+            if (input.type === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(input.value)) {
+                    input.style.borderColor = '#ff4444';
+                } else {
+                    input.style.borderColor = '#ddd';
+                }
+            } else if (input.type === 'password') {
+                if (input.value.length < 6) {
+                    input.style.borderColor = '#ff4444';
+                } else {
+                    input.style.borderColor = '#ddd';
+                }
+            }
+        }
+    
+        // Handle forgot password link
+        const forgotPasswordLink = document.querySelector('.forgot-password a');
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Password reset functionality would be implemented here');
+            });
+        }
+    
+        // Re-show modal if hidden (for demo purposes)
+        if (modal.style.display === 'none') {
+            const showModalButton = document.createElement('button');
+            showModalButton.textContent = 'Show Modal';
+            showModalButton.style.position = 'fixed';
+            showModalButton.style.top = '20px';
+            showModalButton.style.left = '20px';
+            document.body.appendChild(showModalButton);
+            
+            showModalButton.addEventListener('click', function() {
+                modal.style.display = 'block';
+            });
+        }
+    });
+    </script>
+    </body>
+    </html>
