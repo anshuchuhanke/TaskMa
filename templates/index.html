@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskMa</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <title>Taskma - Organize your work and life</title>
 </head>
 <body>
-    
+    <nav class="navbar">
+        <a href="#" class="logo">Taskma</a>
+        <div class="nav-links">
+            <a href="#">Features</a>
+            <a href="#">Made For</a>
+            <a href="#">Resources</a>
+            <a href="#">Pricing</a>
+            <a href="{{url_for('register')}}" class="button">Start for free</a>
+        </div>
+    </nav>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Organize your work and life, finally.</h1>
+            <p>Simplify life for both you and your team with the world's #1 task manager and to-do list app.</p>
+
+            <a href="{{url_for('register')}}"" class="button">Start for free</a>
+        </div>
+        <div class="hero-image">
+            <span class="sparkle sparkle-1">✨</span>
+            <img src="/api/placeholder/600/400" alt="Taskma app interface">
+            <span class="sparkle sparkle-2">✨</span>
+        </div>
+    </main>
 </body>
 </html>

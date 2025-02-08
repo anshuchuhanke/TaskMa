@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='dashboard.css')}}">
+    <title>TaskMa Todo</title>
+    
+</head>
+<body>
+    <div class="sidebar">
+        <div class="user-section">
+            <div class="user-avatar"></div>
+            <div class="user-name">anshnoor</div>
+        </div>
+        
+        <div class="add-task">
+            <span class="add-task-icon">+</span>
+            Add task
+        </div>
+
+        <div class="menu-item active">
+            <span>Today</span>
+            <span class="count">2</span>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="today-title">Today</h1>
+        <div class="task-count">2 tasks</div>
+        
+        <div class="add-task-main">
+            <span class="add-task-main-icon">+</span>
+            Add task
+        </div>
+    </div>
+</body>
+</html>

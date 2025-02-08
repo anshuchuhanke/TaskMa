@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #9b6bb3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hero {
+    padding: 4rem 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #202020;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.reviews {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.stars {
+    color: #ff9900;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, 
+        #f6e681 0%,
+        #e8a5e1 25%,
+        #c77dbe 50%,
+        #9b6bb3 75%,
+        #8459d9 100%
+    );
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #d43b27;
+}
+
+.button.secondary {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.hero-image {
+    position: relative;
+    padding: 2rem;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 2rem;
+    color: #ffd700;
+}
+
+.sparkle-1 {
+    top: 0;
+    left: 10%;
+}
+
+.sparkle-2 {
+    bottom: 10%;
+    right: 0;
+}
