@@ -3,36 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static',filename='dashboard.css')}}">
-    <title>TaskMa Todo</title>
+    <title>Task Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #f7f7f7;
+            border-right: 1px solid #e0e0e0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #ff9797;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .settings-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .add-task-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border: none;
+            background: none;
+            color: #ff4949;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .add-task-btn:hover {
+            background: #fff1f1;
+            border-radius: 6px;
+        }
+
+        .categories {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .category {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .category.selected {
+            background: #ffe8e8;
+        }
+
+        .category-count {
+            background: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .delete-btn {
+            display: none;
+            position: absolute;
+            display: inline-block;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #ff4949;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .category:hover .delete-btn {
+            display: block;
+        }
+
+        .category:hover .category-count {
+            display: none;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .task-count {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .category-input {
+            display: none;
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-top: 8px;
+            width: 100%;
+        }
+
+        .category-input.active {
+            display: block;
+        }
+        ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+}
+
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+}
+
+li {
+    display: flex; /* Enable flexbox */
+    justify-content: space-between; /* Space between text & button */
+    align-items: center; /* Align items in center */
+    background: #f8f9fa; /* Light grey background */
+    border-radius: 8px;
+    padding: 12px;
+    margin: 6px 0;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+li:hover {
+    background: #e9ecef;
+}
+
+/* Smooth fade-in effect for new tasks */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Tick Button Style */
+.tick-btn {
+    background-color: green;
+    width: 32px;
+    color: white;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.tick-btn:hover {
+    background-color: darkgreen;
+}
+.darkmode{
+    width: 80px;
+    height: 20px;
+    border-radius: 4%;
+    box-shadow: none;
+    margin-left: 10%;
+    text-align: center;
+    justify-content: center;
+    font-family: monospace;
     
+    
+}
+.dark-mode .sidebar {
+    background: #333;
+}
+
+.dark-mode .category {
+    color: white;
+}
+
+.dark-mode .category.selected {
+    background: #555;
+    color: white;
+}
+
+.dark-mode #taskList {
+    background: #555;
+    color: white;
+}
+
+.dark-mode #taskList li {
+    background: #444;
+    border-radius: 8px;
+    color: white;
+}
+
+.dark-mode #taskList li:hover {
+    background: #666;
+}
+
+.dark-mode .add-task {
+    background-color: #45d159;
+}
+.dark-mode .sidebar {
+        background: #333;
+}
+.dark-mode {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+
+    </style>
 </head>
 <body>
     <div class="sidebar">
-        <div class="user-section">
-            <div class="user-avatar"></div>
-            <div class="user-name">anshnoor</div>
+        <div class="user-info">
+            <div class="user-profile">
+                <div class="user-avatar">D</div>
+                <span>divanshu</span>
+            </div>
+            <button onclick="toggleDarkMode()" class="darkmode"> Dark Mode</button>
+            <svg class="settings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                
+            </svg>
         </div>
-        
-        <div class="add-task">
-            <span class="add-task-icon">+</span>
+        <button class="add-task-btn" id="addTaskBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
             Add task
+        </button>
+        <div class="categories" id="categories">
+            <div class="category selected">
+                <span>Today</span>
+                <span class="category-count">2</span>
+            </div>
         </div>
-
-        <div class="menu-item active">
-            <span>Today</span>
-            <span class="count">2</span>
-        </div>
+        <input type="text" class="category-input" id="categoryInput" placeholder="Enter category name">
     </div>
 
     <div class="main-content">
-        <h1 class="today-title">Today</h1>
-        <div class="task-count">2 tasks</div>
-        
-        <div class="add-task-main">
-            <span class="add-task-main-icon">+</span>
+        <h1>Today</h1>
+        <div class="task-count">0 tasks</div>
+        <button class="add-task-btn" id="addTaskMainBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
             Add task
-        </div>
+        </button>
+        <input type="text" id="taskInput" class="category-input" placeholder="Enter task" style="display: none;">
+        <ul id="taskList"></ul>        
     </div>
+
+    <script>
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const categoryInput = document.getElementById('categoryInput');
+        const categoriesContainer = document.getElementById('categories');
+        let categoryCount = 1;
+
+        addTaskBtn.addEventListener('click', () => {
+            categoryInput.classList.add('active');
+            categoryInput.focus();
+        });
+
+        categoryInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && categoryInput.value.trim() !== '') {
+                // Create new category
+                const newCategory = document.createElement('div');
+                newCategory.className = 'category';
+                newCategory.innerHTML = `
+                    <span>${categoryInput.value}</span>
+                    <span class="category-count">0</span>
+                    <button class="delete-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                `;
+
+                // Add click handler to select category
+                newCategory.addEventListener('click', (e) => {
+                    if (!e.target.closest('.delete-btn')) {
+                        document.querySelectorAll('.category').forEach(cat => {
+                            cat.classList.remove('selected');
+                        });
+                        newCategory.classList.add('selected');
+                        
+                        // Update main content
+                        document.querySelector('.main-content h1').textContent = categoryInput.value;
+                        document.querySelector('.task-count').textContent = '0 tasks';
+                    }
+                });
+
+                // Add delete functionality
+                const deleteBtn = newCategory.querySelector('.delete-btn');
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (newCategory.classList.contains('selected')) {
+                        // If deleted category was selected, select the first category
+                        const firstCategory = document.querySelector('.category');
+                        if (firstCategory) {
+                            firstCategory.classList.add('selected');
+                            document.querySelector('.main-content h1').textContent = firstCategory.querySelector('span').textContent;
+                        }
+                    }
+                    newCategory.remove();
+                });
+
+                // Add to categories container
+                categoriesContainer.appendChild(newCategory);
+
+                // Reset input
+                categoryInput.value = '';
+                categoryInput.classList.remove('active');
+                categoryCount++;
+            }
+        });
+
+        // Blur input on escape
+        categoryInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Escape') {
+                categoryInput.value = '';
+                categoryInput.classList.remove('active');
+            }
+        });
+
+        // Initial category click handler
+        document.querySelector('.category').addEventListener('click', function() {
+            document.querySelectorAll('.category').forEach(cat => {
+                cat.classList.remove('selected');
+            });
+            this.classList.add('selected');
+        });
+
+        const addTaskMainBtn = document.getElementById('addTaskMainBtn');
+const taskInput = document.getElementById('taskInput');
+const taskList = document.getElementById('taskList');
+let taskCount = 0;
+
+// Toggle Task Input
+addTaskMainBtn.addEventListener('click', () => {
+    taskInput.style.display = 'block';
+    taskInput.focus();
+});
+
+// Add Task on Enter
+taskInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && taskInput.value.trim() !== '') {
+        // Create Task Element
+        const taskItem = document.createElement('li');
+        taskItem.classList.add('fade-in'); // Animation effect
+        taskItem.innerHTML = `
+            <span>${taskInput.value}</span>
+            <button class="tick-btn">✔</button>
+        `;
+
+        // Append to Task List
+        taskList.appendChild(taskItem);
+
+        // Update Task Count
+        taskCount++;
+        document.querySelector('.task-count').textContent = `${taskCount} tasks`;
+
+        // Update Category Count
+        const selectedCategory = document.querySelector('.category.selected .category-count');
+        if (selectedCategory) {
+            selectedCategory.textContent = parseInt(selectedCategory.textContent) + 1;
+        }
+
+        // Clear Input
+        taskInput.value = '';
+        taskInput.style.display = 'none';
+
+        // Mark Task as Completed
+        taskItem.querySelector('.tick-btn').addEventListener('click', () => {
+            taskItem.remove();
+            taskCount--;
+            document.querySelector('.task-count').textContent = `${taskCount} tasks`;
+
+            // Update Category Count
+            if (selectedCategory) {
+                selectedCategory.textContent = Math.max(0, parseInt(selectedCategory.textContent) - 1);
+            }
+        });
+    }
+});
+
+// Hide Input on Escape
+taskInput.addEventListener('keyup', (e) => {
+    if (e.key === 'Escape') {
+        taskInput.style.display = 'none';
+        taskInput.value = '';
+    }
+});
+function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+
+
+    </script>
 </body>
 </html>
