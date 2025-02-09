@@ -73,7 +73,8 @@ def login():
 def dashboard():
     if 'user_id' not in session:
         return redirect(url_for('login'))  # Redirect if not logged in
-    return render_template('dashboard.html')
+    user = User.query.get(session['user_id'])  # Get logged-in user details
+    return render_template('dashboard.html', user=user)
 
 @app.route('/logout')
 def logout():
