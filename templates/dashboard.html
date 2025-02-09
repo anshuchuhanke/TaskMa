@@ -20,7 +20,7 @@
                     <div class="settings-item">Theme</div>
                     <div class="settings-item">Keyboard shortcuts</div>
                     <div class="settings-item">Activity log</div>
-                    <div class="settings-item">Log out</div>
+                    <div class="settings-item"><a href="{{url_for('logout')}}">Log out</a></div>
                 </div>
             </div>
             
@@ -29,11 +29,7 @@
                 Add Category
             </div>
 
-            <div class="menu-item active">
-                <span>Today</span>
-                <span class="count">2</span>
-            </div>
-
+            <!-- Categories will be inserted here by JavaScript -->
         </div>
         <div class="resize-handle"></div>
     </div>
@@ -41,78 +37,76 @@
     <div class="main-content">
         <div class="headbar">
             <div>
-        <h1 class="today-title">Today</h1>
-        <div class="task-count">2 tasks</div>
-    </div>
+                <h1 class="today-title">Today</h1>
+                <div class="task-count">2 tasks</div>
+            </div>
 
-    <div class="right-section">
-        <div class="clock" id="clock">00:00:00</div>
-        <div class="toggle-m">
-        <div class="toggle">
-            <!-- From Uiverse.io by rishichawda --> 
-<label id="theme-toggle-button">
-    <input type="checkbox" id="toggle">
-    <svg viewBox="0 0 69.667 44" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
-      <g transform="translate(3.5 3.5)" data-name="Component 15 – 1" id="Component_15_1">
-        
-        
-        <g filter="url(#container)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
-          <rect fill="#83cbd8" transform="translate(3.5 3.5)" rx="17.5" height="35" width="60.667" data-name="container" id="container"></rect>
-        </g>
-        
-        <g transform="translate(2.333 2.333)" id="button">
-          
-          <g data-name="sun" id="sun">
-            <g filter="url(#sun-outer)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
-              <circle fill="#f8e664" transform="translate(5.83 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="sun-outer" id="sun-outer-2"></circle>
-            </g>
-            <g filter="url(#sun)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
-              <path fill="rgba(246,254,247,0.29)" transform="translate(9.33 9.33)" d="M11.667,0A11.667,11.667,0,1,1,0,11.667,11.667,11.667,0,0,1,11.667,0Z" data-name="sun" id="sun-3"></path>
-            </g>
-            <circle fill="#fcf4b9" transform="translate(8.167 8.167)" r="7" cy="7" cx="7" id="sun-inner"></circle>
-          </g>
-          
-            
-          <g data-name="moon" id="moon">
-            <g filter="url(#moon)" transform="matrix(1, 0, 0, 1, -31.5, -5.83)">
-              <circle fill="#cce6ee" transform="translate(31.5 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="moon" id="moon-3"></circle>
-            </g>
-            <g fill="#a6cad0" transform="translate(-24.415 -1.009)" id="patches">
-              <circle transform="translate(43.009 4.496)" r="2" cy="2" cx="2"></circle>
-              <circle transform="translate(39.366 17.952)" r="2" cy="2" cx="2" data-name="patch"></circle>
-              <circle transform="translate(33.016 8.044)" r="1" cy="1" cx="1" data-name="patch"></circle>
-              <circle transform="translate(51.081 18.888)" r="1" cy="1" cx="1" data-name="patch"></circle>
-              <circle transform="translate(33.016 22.503)" r="1" cy="1" cx="1" data-name="patch"></circle>
-              <circle transform="translate(50.081 10.53)" r="1.5" cy="1.5" cx="1.5" data-name="patch"></circle>
-            </g>
-          </g>
-        </g>
-       
-        
-        <g filter="url(#cloud)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
-          <path fill="#fff" transform="translate(-3466.47 -160.94)" d="M3512.81,173.815a4.463,4.463,0,0,1,2.243.62.95.95,0,0,1,.72-1.281,4.852,4.852,0,0,1,2.623.519c.034.02-.5-1.968.281-2.716a2.117,2.117,0,0,1,2.829-.274,1.821,1.821,0,0,1,.854,1.858c.063.037,2.594-.049,3.285,1.273s-.865,2.544-.807,2.626a12.192,12.192,0,0,1,2.278.892c.553.448,1.106,1.992-1.62,2.927a7.742,7.742,0,0,1-3.762-.3c-1.28-.49-1.181-2.65-1.137-2.624s-1.417,2.2-2.623,2.2a4.172,4.172,0,0,1-2.394-1.206,3.825,3.825,0,0,1-2.771.774c-3.429-.46-2.333-3.267-2.2-3.55A3.721,3.721,0,0,1,3512.81,173.815Z" data-name="cloud" id="cloud"></path>
-        </g>
-  
-        
-        <g fill="#def8ff" transform="translate(3.585 1.325)" id="stars">
-          <path transform="matrix(-1, 0.017, -0.017, -1, 24.231, 3.055)" d="M.774,0,.566.559,0,.539.458.933.25,1.492l.485-.361.458.394L1.024.953,1.509.592.943.572Z"></path>
-          <path transform="matrix(-0.777, 0.629, -0.629, -0.777, 23.185, 12.358)" d="M1.341.529.836.472.736,0,.505.46,0,.4.4.729l-.231.46L.605.932l.4.326L.9.786Z" data-name="star"></path>
-          <path transform="matrix(0.438, 0.899, -0.899, 0.438, 23.177, 29.735)" d="M.015,1.065.475.9l.285.365L.766.772l.46-.164L.745.494.751,0,.481.407,0,.293.285.658Z" data-name="star"></path>
-          <path transform="translate(12.677 0.388) rotate(104)" d="M1.161,1.6,1.059,1,1.574.722.962.607.86,0,.613.572,0,.457.446.881.2,1.454l.516-.274Z" data-name="star"></path>
-          <path transform="matrix(-0.07, 0.998, -0.998, -0.07, 11.066, 15.457)" d="M.873,1.648l.114-.62L1.579.945,1.03.62,1.144,0,.706.464.157.139.438.7,0,1.167l.592-.083Z" data-name="star"></path>
-          <path transform="translate(8.326 28.061) rotate(11)" d="M.593,0,.638.724,0,.982l.7.211.045.724.36-.64.7.211L1.342.935,1.7.294,1.063.552Z" data-name="star"></path>
-          <path transform="translate(5.012 5.962) rotate(172)" d="M.816,0,.5.455,0,.311.323.767l-.312.455.516-.215.323.456L.827.911,1.343.7.839.552Z" data-name="star"></path>
-          <path transform="translate(2.218 14.616) rotate(169)" d="M1.261,0,.774.571.114.3.487.967,0,1.538.728,1.32l.372.662.047-.749.728-.218L1.215.749Z" data-name="star"></path>
-        </g>
-      </g>
-    </svg>
-  </label>
-
+            <div class="right-section">
+                <div class="clock" id="clock">00:00:00</div>
+                <div class="toggle-m">
+                    <div class="toggle">
+                        <label id="theme-toggle-button">
+                            <input type="checkbox" id="toggle">
+                            <svg viewBox="0 0 69.667 44" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                              <g transform="translate(3.5 3.5)" data-name="Component 15 – 1" id="Component_15_1">
+                                
+                                
+                                <g filter="url(#container)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
+                                  <rect fill="#83cbd8" transform="translate(3.5 3.5)" rx="17.5" height="35" width="60.667" data-name="container" id="container"></rect>
+                                </g>
+                                
+                                <g transform="translate(2.333 2.333)" id="button">
+                                  
+                                  <g data-name="sun" id="sun">
+                                    <g filter="url(#sun-outer)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
+                                      <circle fill="#f8e664" transform="translate(5.83 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="sun-outer" id="sun-outer-2"></circle>
+                                    </g>
+                                    <g filter="url(#sun)" transform="matrix(1, 0, 0, 1, -5.83, -5.83)">
+                                      <path fill="rgba(246,254,247,0.29)" transform="translate(9.33 9.33)" d="M11.667,0A11.667,11.667,0,1,1,0,11.667,11.667,11.667,0,0,1,11.667,0Z" data-name="sun" id="sun-3"></path>
+                                    </g>
+                                    <circle fill="#fcf4b9" transform="translate(8.167 8.167)" r="7" cy="7" cx="7" id="sun-inner"></circle>
+                                  </g>
+                                  
+                                    
+                                  <g data-name="moon" id="moon">
+                                    <g filter="url(#moon)" transform="matrix(1, 0, 0, 1, -31.5, -5.83)">
+                                      <circle fill="#cce6ee" transform="translate(31.5 5.83)" r="15.167" cy="15.167" cx="15.167" data-name="moon" id="moon-3"></circle>
+                                    </g>
+                                    <g fill="#a6cad0" transform="translate(-24.415 -1.009)" id="patches">
+                                      <circle transform="translate(43.009 4.496)" r="2" cy="2" cx="2"></circle>
+                                      <circle transform="translate(39.366 17.952)" r="2" cy="2" cx="2" data-name="patch"></circle>
+                                      <circle transform="translate(33.016 8.044)" r="1" cy="1" cx="1" data-name="patch"></circle>
+                                      <circle transform="translate(51.081 18.888)" r="1" cy="1" cx="1" data-name="patch"></circle>
+                                      <circle transform="translate(33.016 22.503)" r="1" cy="1" cx="1" data-name="patch"></circle>
+                                      <circle transform="translate(50.081 10.53)" r="1.5" cy="1.5" cx="1.5" data-name="patch"></circle>
+                                    </g>
+                                  </g>
+                                </g>
+                               
+                                
+                                <g filter="url(#cloud)" transform="matrix(1, 0, 0, 1, -3.5, -3.5)">
+                                  <path fill="#fff" transform="translate(-3466.47 -160.94)" d="M3512.81,173.815a4.463,4.463,0,0,1,2.243.62.95.95,0,0,1,.72-1.281,4.852,4.852,0,0,1,2.623.519c.034.02-.5-1.968.281-2.716a2.117,2.117,0,0,1,2.829-.274,1.821,1.821,0,0,1,.854,1.858c.063.037,2.594-.049,3.285,1.273s-.865,2.544-.807,2.626a12.192,12.192,0,0,1,2.278.892c.553.448,1.106,1.992-1.62,2.927a7.742,7.742,0,0,1-3.762-.3c-1.28-.49-1.181-2.65-1.137-2.624s-1.417,2.2-2.623,2.2a4.172,4.172,0,0,1-2.394-1.206,3.825,3.825,0,0,1-2.771.774c-3.429-.46-2.333-3.267-2.2-3.55A3.721,3.721,0,0,1,3512.81,173.815Z" data-name="cloud" id="cloud"></path>
+                                </g>
+                          
+                                
+                                <g fill="#def8ff" transform="translate(3.585 1.325)" id="stars">
+                                  <path transform="matrix(-1, 0.017, -0.017, -1, 24.231, 3.055)" d="M.774,0,.566.559,0,.539.458.933.25,1.492l.485-.361.458.394L1.024.953,1.509.592.943.572Z"></path>
+                                  <path transform="matrix(-0.777, 0.629, -0.629, -0.777, 23.185, 12.358)" d="M1.341.529.836.472.736,0,.505.46,0,.4.4.729l-.231.46L.605.932l.4.326L.9.786Z" data-name="star"></path>
+                                  <path transform="matrix(0.438, 0.899, -0.899, 0.438, 23.177, 29.735)" d="M.015,1.065.475.9l.285.365L.766.772l.46-.164L.745.494.751,0,.481.407,0,.293.285.658Z" data-name="star"></path>
+                                  <path transform="translate(12.677 0.388) rotate(104)" d="M1.161,1.6,1.059,1,1.574.722.962.607.86,0,.613.572,0,.457.446.881.2,1.454l.516-.274Z" data-name="star"></path>
+                                  <path transform="matrix(-0.07, 0.998, -0.998, -0.07, 11.066, 15.457)" d="M.873,1.648l.114-.62L1.579.945,1.03.62,1.144,0,.706.464.157.139.438.7,0,1.167l.592-.083Z" data-name="star"></path>
+                                  <path transform="translate(8.326 28.061) rotate(11)" d="M.593,0,.638.724,0,.982l.7.211.045.724.36-.64.7.211L1.342.935,1.7.294,1.063.552Z" data-name="star"></path>
+                                  <path transform="translate(5.012 5.962) rotate(172)" d="M.816,0,.5.455,0,.311.323.767l-.312.455.516-.215.323.456L.827.911,1.343.7.839.552Z" data-name="star"></path>
+                                  <path transform="translate(2.218 14.616) rotate(169)" d="M1.261,0,.774.571.114.3.487.967,0,1.538.728,1.32l.372.662.047-.749.728-.218L1.215.749Z" data-name="star"></path>
+                                </g>
+                              </g>
+                            </svg>
+                          </label>
+                        
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-        
 
         <div class="task-container">
             <!-- Tasks will be inserted here by JavaScript -->
@@ -124,6 +118,7 @@
         </div>
     </div>
 
+    <!-- Task Modal -->
     <div class="modal-overlay">
         <div class="task-modal">
             <input type="text" class="task-input" placeholder="Task name">
@@ -134,19 +129,146 @@
         </div>
     </div>
 
+    <!-- Category Modal -->
+    <div class="modal-overlay" id="categoryModal">
+        <div class="task-modal">
+            <input type="text" class="task-input" id="categoryInput" placeholder="Category name">
+            <div class="modal-buttons">
+                <button class="modal-button cancel-button" id="cancelCategory">Cancel</button>
+                <button class="modal-button add-button" id="addCategoryButton">Add category</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Category and Task Management System
+        let categories = [
+            { id: 1, name: 'Today', count: 2, active: true }
+        ];
+
+        let tasks = [
+            { id: 1, text: "Complete project presentation", completed: false, categoryId: 1 },
+            { id: 2, text: "Review team updates", completed: false, categoryId: 1 },
+            { id: 3, text: "Schedule weekly meeting", completed: false, categoryId: 1 }
+        ];
+
+        function renderCategories() {
+            const sidebar = document.querySelector('.sidebar');
+            const userSection = sidebar.querySelector('.user-section');
+            const addCategoryButton = sidebar.querySelector('.add-task');
+            
+            // Remove existing category items
+            const existingCategories = sidebar.querySelectorAll('.menu-item');
+            existingCategories.forEach(item => item.remove());
+            
+            // Add categories after the "Add Category" button
+            categories.forEach(category => {
+                const categoryElement = document.createElement('div');
+                categoryElement.className = `menu-item ${category.active ? 'active' : ''}`;
+                categoryElement.innerHTML = `
+                    <span>${category.name}</span>
+                    <span class="count">${category.count}</span>
+                `;
+                
+                // Insert after add category button
+                addCategoryButton.insertAdjacentElement('afterend', categoryElement);
+                
+                // Add click handler to switch categories
+                categoryElement.addEventListener('click', () => {
+                    categories.forEach(c => c.active = false);
+                    category.active = true;
+                    renderCategories();
+                    renderTasks();
+                });
+            });
+        }
+
+        function addCategory(name) {
+            const newCategory = {
+                id: Date.now(),
+                name: name,
+                count: 0,
+                active: false
+            };
+            categories.push(newCategory);
+            renderCategories();
+        }
+
+        function renderTasks() {
+            const activeCategory = categories.find(c => c.active);
+            const taskContainer = document.querySelector('.task-container');
+            taskContainer.innerHTML = '';
+            
+            const filteredTasks = tasks.filter(task => task.categoryId === activeCategory.id);
+            
+            filteredTasks.forEach(task => {
+                const taskElement = document.createElement('div');
+                taskElement.className = 'task-item';
+                taskElement.innerHTML = `
+                    <div class="task-checkbox ${task.completed ? 'checked' : ''}" 
+                         onclick="toggleTask(${task.id})"></div>
+                    <div class="task-content ${task.completed ? 'completed' : ''}">${task.text}</div>
+                    <div class="task-actions">
+                        <button class="task-button done-button" onclick="toggleTask(${task.id})">
+                            ${task.completed ? 'Undo' : 'Done'}
+                        </button>
+                        <button class="task-button delete-button" onclick="deleteTask(${task.id})">
+                            Delete
+                        </button>
+                    </div>
+                `;
+                taskContainer.appendChild(taskElement);
+            });
+            
+            // Update task count and title
+            const activeTaskCount = filteredTasks.length;
+            document.querySelector('.task-count').textContent = `${activeTaskCount} tasks`;
+            document.querySelector('.today-title').textContent = activeCategory.name;
+            
+            // Update category count
+            activeCategory.count = activeTaskCount;
+            renderCategories();
+        }
+
+        function addTask(text) {
+            const activeCategory = categories.find(c => c.active);
+            if (activeCategory) {
+                const newTask = {
+                    id: Date.now(),
+                    text: text,
+                    completed: false,
+                    categoryId: activeCategory.id
+                };
+                tasks.push(newTask);
+                renderTasks();
+            }
+        }
+
+        function toggleTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.completed = !task.completed;
+                renderTasks();
+            }
+        }
+
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            renderTasks();
+        }
+
+        // Event Listeners
         document.addEventListener("DOMContentLoaded", function() {
+            // Theme toggle functionality
             const toggleCheckbox = document.getElementById("toggle");
             const body = document.body;
 
-            // Check for saved theme preference
             const darkMode = localStorage.getItem("darkMode");
             if (darkMode === "enabled") {
                 body.classList.add("dark-mode");
                 toggleCheckbox.checked = true;
             }
 
-            // Theme toggle handler
             toggleCheckbox.addEventListener("change", function() {
                 if (this.checked) {
                     body.classList.add("dark-mode");
@@ -156,187 +278,143 @@
                     localStorage.setItem("darkMode", "disabled");
                 }
             });
-        });
-        // Sidebar resize functionality
-        const sidebarContainer = document.querySelector('.sidebar-container');
-        const resizeHandle = document.querySelector('.resize-handle');
-        let isResizing = false;
-        let startX;
-        let startWidth;
 
-        resizeHandle.addEventListener('mousedown', (e) => {
-            isResizing = true;
-            startX = e.clientX;
-            startWidth = sidebarContainer.offsetWidth;
-            resizeHandle.classList.add('active');
-            document.body.style.cursor = 'col-resize';
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isResizing) return;
-            const width = startWidth + (e.clientX - startX);
-            if (width >= 305 && width <= 600) {
-                sidebarContainer.style.width = $;{width}px;
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            if (isResizing) {
-                isResizing = false;
-                resizeHandle.classList.remove('active');
-                document.body.style.cursor = '';
-            }
-        });
-
-        // Settings dropdown functionality
-        const settingsIcon = document.querySelector('.settings-icon');
-        const settingsDropdown = document.querySelector('.settings-dropdown');
-
-        settingsIcon.addEventListener('click', (e) => {
-            e.stopPropagation();
-            settingsDropdown.classList.toggle('active');
-        });
-
-        document.addEventListener('click', () => {
-            settingsDropdown.classList.remove('active');
-        });
-
-        // Add task modal functionality
-        const addTaskButtons = document.querySelectorAll('.add-task, .add-task-main');
-        const modalOverlay = document.querySelector('.modal-overlay');
-        const taskInput = document.querySelector('.task-input');
-        const cancelButton = document.querySelector('.cancel-button');
-        const addButton = document.querySelector('.add-button');
-
-        addTaskButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                modalOverlay.classList.add('active');
-                taskInput.focus();
+            // Add Category button click handler
+            document.querySelector('.add-task').addEventListener('click', () => {
+                document.getElementById('categoryModal').classList.add('active');
+                document.getElementById('categoryInput').focus();
             });
-        });
 
-        cancelButton.addEventListener('click', () => {
-            modalOverlay.classList.remove('active');
-            taskInput.value = '';
-        });
+            // Category modal handlers
+            document.getElementById('cancelCategory').addEventListener('click', () => {
+                document.getElementById('categoryModal').classList.remove('active');
+                document.getElementById('categoryInput').value = '';
+            });
 
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
+            document.getElementById('addCategoryButton').addEventListener('click', () => {
+                const input = document.getElementById('categoryInput');
+                const name = input.value.trim();
+                
+                if (name) {
+                    addCategory(name);
+                    input.value = '';
+                    document.getElementById('categoryModal').classList.remove('active');
+                }
+            });
+
+            // Add task button handlers
+            const addTaskButtons = document.querySelectorAll('.add-task-main');
+            const modalOverlay = document.querySelector('.modal-overlay');
+            const taskInput = document.querySelector('.task-input');
+            const cancelButton = document.querySelector('.cancel-button');
+            const addButton = document.querySelector('.add-button');
+
+            addTaskButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    modalOverlay.classList.add('active');
+                    taskInput.focus();
+                });
+            });
+
+            cancelButton.addEventListener('click', () => {
                 modalOverlay.classList.remove('active');
                 taskInput.value = '';
+            });
+
+            addButton.addEventListener('click', () => {
+                const input = document.querySelector('.task-input');
+                const text = input.value.trim();
+                
+                if (text) {
+                    addTask(text);
+                    input.value = '';
+                    modalOverlay.classList.remove('active');
+                }
+            });
+
+            // Clock functionality
+            function updateClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+                let seconds = now.getSeconds();
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                document.getElementById("clock").textContent = `${hours}:${minutes}:${seconds}`;
             }
+
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            // Avatar generation
+            function generateAvatar() {
+                const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                const svg = `
+                    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" fill="${color}"/>
+                        <circle cx="20" cy="15" r="7" fill="white" opacity="0.5"/>
+                        <circle cx="20" cy="35" r="12" fill="white" opacity="0.5"/>
+                    </svg>
+                `;
+                
+                document.getElementById('userAvatar').innerHTML = svg;
+            }
+
+            generateAvatar();
+
+            // Sidebar resize functionality
+            const sidebarContainer = document.querySelector('.sidebar-container');
+            const resizeHandle = document.querySelector('.resize-handle');
+            let isResizing = false;
+            let startX;
+            let startWidth;
+
+            resizeHandle.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                startX = e.clientX;
+                startWidth = sidebarContainer.offsetWidth;
+                resizeHandle.classList.add('active');
+                document.body.style.cursor = 'col-resize';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isResizing) return;
+                const width = startWidth + (e.clientX - startX);
+                if (width >= 305 && width <= 600) {
+                    sidebarContainer.style.width = `${width}px`;
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isResizing) {
+                    isResizing = false;
+                    resizeHandle.classList.remove('active');
+                    document.body.style.cursor = '';
+                }
+            });
+
+            // Settings dropdown functionality
+            const settingsIcon = document.querySelector('.settings-icon');
+            const settingsDropdown = document.querySelector('.settings-dropdown');
+
+            settingsIcon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                settingsDropdown.classList.toggle('active');
+            });
+
+            document.addEventListener('click', () => {
+                settingsDropdown.classList.remove('active');
+            });
+
+            // Initial render
+            renderCategories();
+            renderTasks();
         });
-
-        // Generate random vector avatar
-        function generateAvatar() {
-            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD'];
-            const shapes = ['circle', 'rect', 'polygon'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            const svg = `
-                <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="40" height="40" fill="${color}"/>
-                    <circle cx="20" cy="15" r="7" fill="white" opacity="0.5"/>
-                    <circle cx="20" cy="35" r="12" fill="white" opacity="0.5"/>
-                </svg>
-            `;
-            
-            document.getElementById('userAvatar').innerHTML = svg;
-        }
-
-        generateAvatar();
-
-        let tasks = [
-    { id: 1, text: "Complete project presentation", completed: false },
-    { id: 2, text: "Review team updates", completed: false },
-    { id: 3, text: "Schedule weekly meeting", completed: false }
-];
-
-// Function to render tasks
-function renderTasks() {
-    const taskContainer = document.querySelector('.task-container');
-    taskContainer.innerHTML = '';
-    
-    tasks.forEach(task => {
-        const taskElement = document.createElement('div');
-        taskElement.className = 'task-item';
-        taskElement.innerHTML = `
-            <div class="task-checkbox ${task.completed ? 'checked' : ''}" 
-                 onclick="toggleTask(${task.id})"></div>
-            <div class="task-content ${task.completed ? 'completed' : ''}">${task.text}</div>
-            <div class="task-actions">
-                <button class="task-button done-button" onclick="toggleTask(${task.id})">
-                    ${task.completed ? 'Undo' : 'Done'}
-                </button>
-                <button class="task-button delete-button" onclick="deleteTask(${task.id})">
-                    Delete
-                </button>
-            </div>
-        `;
-        taskContainer.appendChild(taskElement);
-    });
-    
-    // Update task count
-    document.querySelector('.task-count').textContent = $;{tasks.length} tasks;
-}
-
-// Function to toggle task completion
-function toggleTask(id) {
-    const task = tasks.find(t => t.id === id);
-    if (task) {
-        task.completed = !task.completed;
-        renderTasks();
-    }
-}
-
-// Function to delete task
-function deleteTask(id) {
-    tasks = tasks.filter(t => t.id !== id);
-    renderTasks();
-}
-
-// Modify your existing add task functionality to include:
-document.querySelector('.add-button').addEventListener('click', () => {
-    const input = document.querySelector('.task-input');
-    const text = input.value.trim();
-    
-    if (text) {
-        tasks.push({
-            id: Date.now(), // Simple way to generate unique IDs
-            text: text,
-            completed: false
-        });
-        
-        input.value = '';
-        modalOverlay.classList.remove('active');
-        renderTasks();
-    }
-});
-
-// Initial render
-function updateClock() {
-    const now = new Date();
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    let seconds = now.getSeconds();
-
-    // Format time to always have two digits
-    hours = hours < 10 ? "0" + hours : hours;
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    document.getElementById("clock").textContent = `${hours}:${minutes}:${seconds}`;
-}
-
-// Update the clock every second
-setInterval(updateClock, 1000);
-
-// Initialize clock immediately when page loads
-updateClock();
-
-
-
-
     </script>
 </body>
 </html>
