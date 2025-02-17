@@ -4,10 +4,6 @@
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-a{
-  text-decoration: none;
-  color: inherit;
-}
 
 body {
   background: #fff;
@@ -104,6 +100,10 @@ body {
   min-width: 200px;
   display: none;
   z-index: 100;
+}
+.settings-dropdown a{
+  text-decoration: none;
+  color: #1a1a1a;
 }
 
 .settings-dropdown.active {
@@ -535,7 +535,6 @@ body.dark-mode .user-name{
   min-width: 95px;
   text-align: center;
 }
-
 
 /* Dark mode support for clock */
 body.dark-mode .clock {
