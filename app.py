@@ -79,7 +79,7 @@ def dashboard():
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
-    return redirect(url_for('index'))  # Redirect to login page
+    return redirect(url_for('login'))  # Redirect to login page
 
 if __name__ == '__main__':
     with app.app_context():
