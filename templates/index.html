@@ -8,12 +8,13 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="#" class="logo">Taskma</a>
+        <a href="#" class="logo">TaskMa</a>
         <div class="nav-links">
             <a href="#">Features</a>
             <a href="#">Made For</a>
             <a href="#">Resources</a>
             <a href="#">Pricing</a>
+            <a href="{{url_for('login')}}" style="border-left: solid black 1px; padding-left: 1rem;">Login</a>
             <a href="{{url_for('register')}}" class="button">Start for free</a>
         </div>
     </nav>
@@ -27,8 +28,8 @@
         </div>
         <div class="hero-image">
             <span class="sparkle sparkle-1">✨</span>
-            <img src="{{url_for('static',filename='assets/dashboard.png')}}"  alt="Taskma app interface">
-            <span class="sparkle sparkle-2">✨</span>
+            <img src="{{url_for('static',filename='assets/cover.avif')}}"  alt="Taskma app interface">
+
         </div>
     </main>
 </body>
